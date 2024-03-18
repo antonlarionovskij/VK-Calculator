@@ -64,3 +64,5 @@ for event in Lslongpoll.listen():          # Инициируем цикл ра�
             message_from_bot('Держи!', get_menu()) # VkKeyboard.get_empty_keyboard()
         if event.text == "π":
             message_from_bot(math.pi, get_menu())
+        if event.text == "Exit":
+            message_from_bot('Выхожу!', VkKeyboard.get_empty_keyboard())
