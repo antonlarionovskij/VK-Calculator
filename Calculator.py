@@ -19,8 +19,8 @@ print('Бот запущен')
 for event in Lslongpoll.listen():  # Инициируем цикл работы бота
     if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
         request = str(event.text)
-        if "+" in event.text or "-" in event.text or "×" in event.text or "÷" in event.text or "sin" in event.text or "cos" in event.text or "pi" in event.text:
-            new_request = request.replace("×", "*").replace("÷", "/").replace("sin", "math.sin").replace("cos", "math.cos").replace("pi", 'math.pi')
+        if "+" in event.text or "-" in event.text or "×" in event.text or "÷" in event.text or "*" in event.text or "/" in event.text or "^" in event.text or "sin" in event.text or "cos" in event.text or "pi" in event.text or "f" in event.text:
+            new_request = request.replace("×", "*").replace("÷", "/").replace("sin", "math.sin").replace("cos", "math.cos").replace("pi", 'math.pi').replace("^", '**').replace("f", 'math.factorial')
             try:
                 message_from_bot(eval(new_request))
             except SyntaxError:
@@ -29,5 +29,9 @@ for event in Lslongpoll.listen():  # Инициируем цикл работы 
                 message_from_bot("Ошибка")
             except NameError:
                 message_from_bot("Ошибка")
-
-
+            except TimeoutError:
+                message_from_bot("Ошибка")
+            except AttributeError:
+                message_from_bot("Ошибка")
+            except ZeroDivisionError:
+                message_from_bot("Деление на ноль")
