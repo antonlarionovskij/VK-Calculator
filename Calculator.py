@@ -41,7 +41,7 @@ signs = {'+':'+',
 print('Бот запущен')
 
 for event in Lslongpoll.listen():  # Инициируем цикл работы бота
-    if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
+    if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.chat_id == 3 and event.text:
         request = str(event.text)
         if is_part_in_list(request, list(signs.keys())):
             new_request = multiple_replace(request, signs)
