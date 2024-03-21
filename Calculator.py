@@ -35,13 +35,28 @@ signs = {'+':'+',
          '^':'^',
          'sin':'sin',
          'cos':'cos',
-         'pi':'pi'
+         'tg':'tan',
+         'tan':'tan',
+         'pi':'pi',
+         'abs':'abs',
+         'trunc':'trunc',
+         'round':'round',
+         'e':'e',
+         'Sin':'sin',
+         'Cos':'cos',
+         'Tg':'tan',
+         'Tan':'tan',
+         'Pi':'pi',
+         'Abs':'abs',
+         'Trunc':'trunc',
+         'Round':'round',
+         'E':'e'
         }
 
 print('Бот запущен')
 
 for event in Lslongpoll.listen():  # Инициируем цикл работы бота
-    if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.chat_id == 3 and event.text:
+    if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
         request = str(event.text)
         if is_part_in_list(request, list(signs.keys())):
             new_request = multiple_replace(request, signs)
